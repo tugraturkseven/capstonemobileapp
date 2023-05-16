@@ -1,20 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Animated, View } from 'react-native'
+import { Text, Button, useTheme } from 'react-native-paper';
 
 export default function App() {
+  const theme = useTheme();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ backgroundColor: theme.colors.primary, display: 'flex', height: "100%" }}>
+      <Text variant="displaySmall" style={{ color: theme.colors.onPrimary, display: 'flex', textAlign: 'center', marginTop: 50, }}>Fire Detector</Text>
+
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
