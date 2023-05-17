@@ -1,16 +1,17 @@
-import { View } from 'react-native'
-import { Text, useTheme, Divider, ProgressBar, MD3Colors } from 'react-native-paper';
+import { View, Image } from 'react-native'
+import { Text, useTheme, Avatar } from 'react-native-paper';
 import User from './components/User';
 
 export default function App() {
-  const theme = useTheme();
   return (
-    <View style={{ backgroundColor: theme.colors.secondaryContainer, display: 'flex', height: "100%" }}>
-      <User />
-      <Text variant="titleMedium" style={{ color: MD3Colors.primary10, display: 'flex', textAlign: 'center', marginTop: 50, }}>Smoke & Gas</Text>
-      <ProgressBar animatedValue={0.35} style={{ margin: 30, }} color={MD3Colors.error50} />
-      <Text variant="titleMedium" style={{ color: MD3Colors.primary10, display: 'flex', textAlign: 'center', marginTop: 50, }}>Is fire detected?</Text>
-      <ProgressBar animatedValue={0.35} style={{ margin: 30, }} color={'green'} />
+    <View style={{ backgroundColor: 'black', display: 'flex', height: "100%" }}>
+      <User ></User>
+      <Text variant="displayMedium" style={{ color: 'white', display: 'flex', textAlign: 'center', marginTop: 10, fontWeight: '300' }}>Status</Text>
+      <Avatar.Image size={72} style={{ backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', marginTop: 30 }} source={require('../capstonemobileapp/assets/co2.png')} />
+      <Text variant='titleLarge' style={{ color: 'white', fontWeight: 100, textAlign: 'center' }}>100</Text>
+      <Avatar.Image size={72} style={{ backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', marginTop: 125 }} source={require('../capstonemobileapp/assets/fire.png')} />
+      <Text variant='titleLarge' style={{ color: 'white', fontWeight: 100, textAlign: 'center', marginTop: 30 }}>No fire detected.</Text>
+      <Image source={require('../capstonemobileapp/assets/smoke-background.jpg')} style={{ marginTop: -40, zIndex: -1 }} />
     </View>
   );
 }
