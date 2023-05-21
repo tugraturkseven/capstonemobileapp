@@ -37,7 +37,7 @@ export default function LoginScreen({ navigation }) {
                     value={password} onChangeText={x => setPassword(x)} outlineColor='white' mode='outlined' style={{ width: 300, height: 40, marginLeft: 'auto', marginRight: 'auto', borderColor: 'white', marginBottom: 10 }}
                     right={<TextInput.Icon icon="eye" style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: 'auto', marginRight: 'auto' }} size={18} onPress={() => setSecureText(!secureText)} />}
                 />
-                <Button icon="login" mode="contained" style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', backgroundColor: MD3Colors.neutralVariant20 }} rippleColor={MD3Colors.neutralVariant40} onPress={() => console.log('basıldı.')} >
+                <Button icon="login" mode="contained" style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', backgroundColor: MD3Colors.neutralVariant20 }} rippleColor={MD3Colors.neutralVariant40} onPress={() => navigation.navigate('Main')} >
                     Giriş Yap
                 </Button>
                 <Button mode="text" onPress={() => console.log('text')} style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
