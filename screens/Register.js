@@ -20,14 +20,15 @@ const styles = StyleSheet.create({
     }
 });
 
-export default function LoginScreen({ navigation }) {
+export default function Register({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [secureText, setSecureText] = useState(true);
+
     return (
         <SafeAreaView style={{ backgroundColor: 'black', height: '100%' }} >
             <Image source={require('../assets/fire-background.jpg')} style={styles.fire} />
-            <View >
+            <View>
                 <Avatar.Icon size={136} icon="account-circle" style={{ backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', marginTop: -200, }} />
                 <Text style={styles.roboto} variant='titleMedium'>Kullanıcı Adı</Text>
                 <TextInput value={email} onChangeText={x => setEmail(x)} outlineColor='white' mode='outlined' style={{ width: 300, height: 40, marginLeft: 'auto', marginRight: 'auto', borderColor: 'white', marginBottom: 10 }} />
@@ -37,19 +38,14 @@ export default function LoginScreen({ navigation }) {
                     value={password} onChangeText={x => setPassword(x)} outlineColor='white' mode='outlined' style={{ width: 300, height: 40, marginLeft: 'auto', marginRight: 'auto', borderColor: 'white', marginBottom: 10 }}
                     right={<TextInput.Icon icon="eye" style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: 'auto', marginRight: 'auto' }} size={18} onPress={() => setSecureText(!secureText)} />}
                 />
-                <Button icon="login" mode="contained" style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', backgroundColor: MD3Colors.neutralVariant20 }} rippleColor={MD3Colors.neutralVariant40} onPress={() => navigation.navigate('Main')} >
-                    Giriş Yap
+                <Button icon="account-check" mode="contained" style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', backgroundColor: MD3Colors.neutralVariant20 }} rippleColor={MD3Colors.neutralVariant40} onPress={() => navigation.navigate('Main')} >
+                    Kayıt ol
                 </Button>
-                <Button mode="text" onPress={() => console.log('text')} style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
-                    Şifreni mi unuttun?
+                <Button icon="keyboard-backspace" mode="text" textColor='white' style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} rippleColor={MD3Colors.neutralVariant40} onPress={() => navigation.navigate('Login')} >
+                    Geri Dön
                 </Button>
-                <Button mode="text" onPress={() => navigation.navigate('Register')} style={{ width: 100, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
-                    Kayıt ol.
-                </Button>
-
             </View>
             <Image source={require('../assets/smoke-background.jpg')} style={styles.smoke} />
         </SafeAreaView >
     )
 }
-
