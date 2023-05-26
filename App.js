@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import MainScreen from './screens/MainScreen';
 import Register from './screens/Register';
-
+import Forget from './screens/Forget';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +24,11 @@ export default function App() {
         <Stack.Screen
           name="Register"
           component={Register}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Forget"
+          component={Forget}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

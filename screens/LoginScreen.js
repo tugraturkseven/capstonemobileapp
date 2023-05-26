@@ -40,7 +40,7 @@ export default function LoginScreen({ navigation }) {
                 <Button icon="login" mode="contained" style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', backgroundColor: MD3Colors.neutralVariant20 }} rippleColor={MD3Colors.neutralVariant40} onPress={() => navigation.navigate('Main')} >
                     Giriş Yap
                 </Button>
-                <Button mode="text" onPress={() => console.log('text')} style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
+                <Button mode="text" onPress={() => navigation.navigate('Forget')} style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
                     Şifreni mi unuttun?
                 </Button>
                 <Button mode="text" onPress={() => navigation.navigate('Register')} style={{ width: 100, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
