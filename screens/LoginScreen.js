@@ -1,6 +1,7 @@
 import { View, Image, SafeAreaView, StyleSheet } from 'react-native'
 import { Text, TextInput, Avatar, Button, MD3Colors } from 'react-native-paper';
 import React, { useState } from 'react';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const styles = StyleSheet.create({
     fire: {
@@ -25,7 +26,7 @@ export default function LoginScreen({ navigation }) {
     const [password, setPassword] = useState('');
     const [secureText, setSecureText] = useState(true);
     return (
-        <SafeAreaView style={{ backgroundColor: 'black', height: '100%' }} >
+        <KeyboardAwareScrollView style={{ backgroundColor: 'black', height: '100%' }} >
             <Image source={require('../assets/fire-background.jpg')} style={styles.fire} />
             <View >
                 <Avatar.Icon size={136} icon="account-circle" style={{ backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', marginTop: -200, }} />
@@ -49,7 +50,7 @@ export default function LoginScreen({ navigation }) {
 
             </View>
             <Image source={require('../assets/smoke-background.jpg')} style={styles.smoke} />
-        </SafeAreaView >
+        </KeyboardAwareScrollView >
     )
 }
 
