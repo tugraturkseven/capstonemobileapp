@@ -1,4 +1,4 @@
-import { View, Image, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet } from 'react-native'
 import { Text, TextInput, Avatar, Button, MD3Colors } from 'react-native-paper';
 import React, { useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';

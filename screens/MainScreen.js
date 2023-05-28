@@ -1,6 +1,6 @@
 import { View, Image } from 'react-native'
 import { Text, Button, Avatar } from 'react-native-paper';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 
 export default function MainScreen({ navigation }) {
   return (

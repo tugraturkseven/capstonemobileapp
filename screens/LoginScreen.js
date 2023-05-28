@@ -1,7 +1,8 @@
-import { View, Image, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet } from 'react-native'
 import { Text, TextInput, Avatar, Button, MD3Colors } from 'react-native-paper';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     fire: {
@@ -21,10 +22,60 @@ const styles = StyleSheet.create({
     }
 });
 
+
+async function fetchUsers(username, password) {
+    const data = JSON.stringify({
+        "collection": "login-info",
+        "database": "fire-detection",
+        "dataSource": "Cluster0",
+    });
+
+    const config = {
+        method: 'post',
+        url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-wcsbx/endpoint/data/v1/action/find',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': '7oS0Hwej21ixLROcwecd92caCtcyF35MXQbcARLCRaAbPrfy8QElPSTRT7Xp5WiE',
+        },
+        data: data
+    };
+
+    try {
+        const response = await axios(config);
+        const arr = [...response.data.documents];
+        return arr.some(e => {
+            if (e.username == username && e.password == password) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    } catch (error) {
+        console.log(error)
+        throw error;
+    }
+}
+
+
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [secureText, setSecureText] = useState(true);
+
+    const checkIdentity = () => {
+        fetchUsers(email, password)
+            .then(result => {
+                if (result) {
+                    navigation.navigate('Main')
+                }; // true
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+
     return (
         <KeyboardAwareScrollView style={{ backgroundColor: 'black', height: '100%' }} >
             <Image source={require('../assets/fire-background.jpg')} style={styles.fire} />
@@ -38,7 +89,7 @@ export default function LoginScreen({ navigation }) {
                     value={password} onChangeText={x => setPassword(x)} outlineColor='white' mode='outlined' style={{ width: 300, height: 40, marginLeft: 'auto', marginRight: 'auto', borderColor: 'white', marginBottom: 10 }}
                     right={<TextInput.Icon icon="eye" style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: 'auto', marginRight: 'auto' }} size={18} onPress={() => setSecureText(!secureText)} />}
                 />
-                <Button icon="login" mode="contained" style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', backgroundColor: MD3Colors.neutralVariant20 }} rippleColor={MD3Colors.neutralVariant40} onPress={() => navigation.navigate('Main')} >
+                <Button icon="login" mode="contained" style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', backgroundColor: MD3Colors.neutralVariant20 }} rippleColor={MD3Colors.neutralVariant40} onPress={checkIdentity} >
                     Giriş Yap
                 </Button>
                 <Button mode="text" onPress={() => navigation.navigate('Forget')} style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
