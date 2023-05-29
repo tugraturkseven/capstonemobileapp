@@ -51,6 +51,7 @@ async function fetchUsers(username, password) {
                 return false;
             }
         })
+
     } catch (error) {
         console.log(error)
         throw error;
@@ -68,6 +69,9 @@ export default function LoginScreen({ navigation }) {
             .then(result => {
                 if (result) {
                     navigation.navigate('Main')
+                    console.log(result)
+                } else {
+                    console.log(result)
                 }; // true
             })
             .catch(error => {
