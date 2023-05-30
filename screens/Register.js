@@ -3,14 +3,13 @@ import { Text, TextInput, Avatar, Button, MD3Colors } from 'react-native-paper';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import ToastManager, { Toast } from 'toastify-react-native';
 
 const styles = StyleSheet.create({
     fire: {
         zIndex: -1,
-        transform: 'rotate(180deg)',
     },
     roboto: {
-        fontFamily: 'Roboto',
         fontWeight: 300,
         color: 'white',
         marginLeft: 'auto',
@@ -18,7 +17,6 @@ const styles = StyleSheet.create({
     },
     smoke: {
         zIndex: -1,
-        height: '30%'
     }
 });
 
@@ -47,10 +45,10 @@ async function insertUser(username, password) {
 
     try {
         const response = await axios(config);
-        console.log(response.data)
+        Toast.success('Kayit basarili!', 'top');
 
     } catch (error) {
-        console.log(error)
+        Toast.error('Kayit basarisiz oldu.', 'top')
         throw error;
     }
 }
@@ -65,8 +63,10 @@ export default function Register({ navigation }) {
 
     return (
         <KeyboardAwareScrollView style={{ backgroundColor: 'black', height: '100%' }} >
+            <ToastManager />
             <Image source={require('../assets/fire-background.jpg')} style={styles.fire} />
             <View>
+
                 <Avatar.Icon size={136} icon="account-circle" style={{ backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', marginTop: -200, }} />
                 <Text style={styles.roboto} variant='titleMedium'>Kullanıcı Adı</Text>
                 <TextInput value={email} onChangeText={x => setEmail(x)} outlineColor='white' mode='outlined' style={{ width: 300, height: 40, marginLeft: 'auto', marginRight: 'auto', borderColor: 'white', marginBottom: 10 }} />

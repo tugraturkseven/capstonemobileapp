@@ -4,15 +4,13 @@ import React, { useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
-
+import ToastManager, { Toast } from 'toastify-react-native';
 
 const styles = StyleSheet.create({
     fire: {
         zIndex: -1,
-        transform: 'rotate(180deg)',
     },
     roboto: {
-        fontFamily: 'Roboto',
         fontWeight: 300,
         color: 'white',
         marginLeft: 'auto',
@@ -20,7 +18,6 @@ const styles = StyleSheet.create({
     },
     smoke: {
         zIndex: -1,
-        height: '30%'
     }
 });
 
@@ -84,15 +81,18 @@ export default function Forget({ navigation }) {
     const [password, setPassword] = useState('');
 
     const checkIdentity = () => {
-        fetchUsers("tugraturkseven@hotmail.com")
+        fetchUsers(email)
             .then(result => {
                 if (result != "user not found.") {
                     setPassword(result)
                     sendEmail(email, password);
+                    Toast.success('Sifre mail adresine gonderildi!', 'top');
+                } else {
+                    Toast.error('E posta hatali!', 'top');
                 }
             })
             .catch(error => {
-                console.log(error);
+                Toast.error('Sifre gonderilemedi!', 'top');
             });
     }
 
@@ -100,6 +100,7 @@ export default function Forget({ navigation }) {
     return (
         <KeyboardAwareScrollView style={{ backgroundColor: 'black', height: '100%' }} >
             <Image source={require('../assets/fire-background.jpg')} style={styles.fire} />
+            <ToastManager />
             <View>
                 <Avatar.Icon size={136} icon="account-circle" style={{ backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', marginTop: -200, }} />
                 <Text style={styles.roboto} variant='titleMedium'>Kullanıcı Adı</Text>

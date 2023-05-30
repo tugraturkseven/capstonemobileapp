@@ -1,24 +1,24 @@
 import { View, Image, StyleSheet } from 'react-native'
 import { Text, TextInput, Avatar, Button, MD3Colors } from 'react-native-paper';
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import axios from 'axios';
+import ToastManager, { Toast } from 'toastify-react-native';
 
 const styles = StyleSheet.create({
     fire: {
-        zIndex: -1,
-        transform: 'rotate(180deg)',
+        zIndex: -5,
     },
     roboto: {
-        fontFamily: 'Roboto',
         fontWeight: 300,
         color: 'white',
         marginLeft: 'auto',
         marginRight: 'auto',
     },
     smoke: {
-        zIndex: -1,
-        height: '30%'
+        zIndex: 1,
+        height: '50%',
+        marginTop: -10
     }
 });
 
@@ -68,22 +68,24 @@ export default function LoginScreen({ navigation }) {
         fetchUsers(email, password)
             .then(result => {
                 if (result) {
+                    setEmail('');
+                    setPassword('');
                     navigation.navigate('Main')
-                    console.log(result)
                 } else {
-                    console.log(result)
+                    Toast.error('Giris hatali, bilgileri kontrol ediniz!')
                 }; // true
             })
             .catch(error => {
-                console.log(error);
+                Toast.error(error);
             });
     }
 
 
     return (
         <KeyboardAwareScrollView style={{ backgroundColor: 'black', height: '100%' }} >
-            <Image source={require('../assets/fire-background.jpg')} style={styles.fire} />
             <View >
+                <Image source={require('../assets/fire-background.jpg')} style={styles.fire} />
+                <ToastManager />
                 <Avatar.Icon size={136} icon="account-circle" style={{ backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', marginTop: -200, }} />
                 <Text style={styles.roboto} variant='titleMedium'>Kullanıcı Adı</Text>
                 <TextInput value={email} onChangeText={x => setEmail(x)} outlineColor='white' mode='outlined' style={{ width: 300, height: 40, marginLeft: 'auto', marginRight: 'auto', borderColor: 'white', marginBottom: 10 }} />
@@ -99,12 +101,11 @@ export default function LoginScreen({ navigation }) {
                 <Button mode="text" onPress={() => navigation.navigate('Forget')} style={{ width: 150, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
                     Şifreni mi unuttun?
                 </Button>
-                <Button mode="text" onPress={() => navigation.navigate('Register')} style={{ width: 100, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} textColor={MD3Colors.neutral80}>
+                <Button mode="text" onPress={() => navigation.navigate('Register')} style={{ width: 100, marginLeft: 'auto', marginRight: 'auto', marginTop: 10, marginBottom: 10 }} textColor={MD3Colors.neutral80}>
                     Kayıt ol.
                 </Button>
-
+                <Image source={require('../assets/smoke-background.jpg')} style={styles.smoke} />
             </View>
-            <Image source={require('../assets/smoke-background.jpg')} style={styles.smoke} />
         </KeyboardAwareScrollView >
     )
 }
