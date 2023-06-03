@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Forget from '../screens/Forget';
+import LoginScreen from '../screens/LoginScreen';
 
 jest.retryTimes(1);
 jest.useFakeTimers();
@@ -10,10 +10,10 @@ jest.mock('react-native-keyboard-aware-scroll-view', () => {
 });
 
 
-describe('<Forget />', () => {
+describe('<LoginScreen />', () => {
 
     it("renders correctly", () => {
-        const tree = renderer.create(<Forget />).toJSON();
+        const tree = renderer.create(<LoginScreen />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
