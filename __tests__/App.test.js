@@ -11,11 +11,8 @@ jest.mock('react-native-keyboard-aware-scroll-view', () => {
 });
 
 describe('<App />', () => {
-
   it("renders correctly", () => {
     const tree = renderer.create(<App />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-
 });

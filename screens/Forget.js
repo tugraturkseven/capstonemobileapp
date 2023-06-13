@@ -84,9 +84,10 @@ export default function Forget({ navigation }) {
         fetchUsers(email)
             .then(result => {
                 if (result != "user not found.") {
+                    console.log(result)
                     setPassword(result)
                     sendEmail(email, password);
-                    Toast.success('Sifre mail adresine gonderildi!', 'top');
+                    Toast.success('Sifre maile gonderildi!', 'top');
                 } else {
                     Toast.error('E posta hatali!', 'top');
                 }
