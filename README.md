@@ -23,7 +23,10 @@ Welcome to the Capstone Mobile App repository! This repository contains the sour
 
 ## Usage
 
-https://github.com/tugraturkseven/capstonemobileapp/assets/28603785/d58df9cc-3bbb-40d9-93a0-5792d36d1990
+
+https://github.com/tugraturkseven/capstonemobileapp/assets/28603785/14c2c8ac-6753-4c1d-86c7-5aba199ee1c2
+
+
 
 
 
