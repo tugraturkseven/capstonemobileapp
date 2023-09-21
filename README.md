@@ -1,14 +1,11 @@
 # Capstone Mobile App
 
-Welcome to the Capstone Mobile App repository! This repository contains the source code and related resources for our mobile application developed as part of the capstone project at Bahcesehir University. The app aims to provide a solution for a fire detection system that utilizes gas and flame sensors. The sensor data is read and uploaded to MongoDB using a Python API. The mobile app is developed using React Native, React Native Paper, and Expo.
+Welcome to the Capstone Mobile App repository! This repository contains the source code and related resources for our mobile application developed as part of the capstone project at Bahcesehir University. The app aims to provide a solution for a fire detection system that utilizes gas and flame sensors. The sensor data is read and uploaded to MongoDB using a Python API. The mobile app is developed using React Native, React Native Paper, Expo and Toastify.
 
 ## Table of Contents
 - [Features](#features)
-- [Demo](#demo)
-- [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 
@@ -23,32 +20,10 @@ Welcome to the Capstone Mobile App repository! This repository contains the sour
   - Visual indicators or alerts for abnormal readings.
   - Additional information or statistics related to the fire detection system.
 
-## Installation
 
-To run the Capstone Mobile App locally, follow these steps:
+## Usage
 
-1. Clone the repository:
-
-   ```
-   git clone https://github.com/tugraturkseven/capstonemobileapp.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```
-   cd capstonemobileapp
-   ```
-
-3. Install dependencies using npm:
-
-   ```
-   npm install
-   ```
+https://github.com/tugraturkseven/capstonemobileapp/assets/28603785/d58df9cc-3bbb-40d9-93a0-5792d36d1990
 
 
-## Screenshots of UI
 
-![1](https://github.com/tugraturkseven/capstonemobileapp/assets/28603785/bdad8963-5192-4722-9bce-845b16d45b5c)
-![3](https://github.com/tugraturkseven/capstonemobileapp/assets/28603785/5ed6afa9-b51e-4a53-8527-404d74d155a3)
-![4](https://github.com/tugraturkseven/capstonemobileapp/assets/28603785/f7c27a07-49da-4650-b354-f6fd48705dc1)
-![2](https://github.com/tugraturkseven/capstonemobileapp/assets/28603785/377461a6-9ea1-45bd-b886-97ceaac6d66b)
